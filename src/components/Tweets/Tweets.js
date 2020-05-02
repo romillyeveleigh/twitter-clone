@@ -22,6 +22,7 @@ class Tweets extends Component {
 
     this.onListenForMessages();
     this.onListenForLikes();
+    this.setState({ loading: true });
   }
 
   componentDidUpdate(props) {
@@ -119,7 +120,7 @@ class Tweets extends Component {
   };
 
   render() {
-    const { message, messages, likes } = this.props;
+    const { messages, likes } = this.props;
     const { text, loading } = this.state;
 
     return (
@@ -144,7 +145,7 @@ class Tweets extends Component {
             </form>
           )}
 
-        {messages && (
+        {messages && !loading && (
           <TweetList
             authUser={this.props.authUser}
             messages={messages}

@@ -84,7 +84,9 @@ class UserProfileItem extends Component {
             <br />
             <br />
             <img
-              src="http://localhost:3000/img/default_profile_bigger.png"
+              src={`https://api.adorable.io/avatars/50/${
+                this.props.match.params.id
+              }`}
               style={{
                 width: 50,
                 height: 50,

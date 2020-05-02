@@ -107,7 +107,9 @@ class TweetItem extends Component {
         ) : (
           <span>
             <img
-              src="http://localhost:3000/img/default_profile_bigger.png"
+              src={`https://api.adorable.io/avatars/50/${
+                message.userId
+              }`}
               style={{
                 width: 50,
                 height: 50,
@@ -145,7 +147,13 @@ class TweetItem extends Component {
               <strong>{message.text}</strong>
             </Link>
             <br />
-            <FontAwesomeIcon icon={faCommentAlt} /> {this.state.count}
+            <Link
+              onClick={() => this.props.onSetUsers({})}
+              to={`${ROUTES.REPLIES}/${message.uid}`}
+            >
+              <FontAwesomeIcon icon={faCommentAlt} />{' '}
+              {this.state.count}
+            </Link>
             <br />
             <LikeButton
               authUser={authUser}

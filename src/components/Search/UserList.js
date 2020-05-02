@@ -63,7 +63,9 @@ class UserList extends Component {
               .map(user => (
                 <li key={user.uid}>
                   <img
-                    src="http://localhost:3000/img/default_profile_bigger.png"
+                    src={`https://api.adorable.io/avatars/50/${
+                      user.uid
+                    }`}
                     style={{
                       width: 50,
                       height: 50,
