@@ -6,9 +6,15 @@ import { Tweets } from '../Tweets';
 
 const HomePage = () => (
   <div>
-    <h1>Home Page</h1>
-    <p>The Home Page is accessible by every signed in user.</p>
-
+    <img
+      src="http://localhost:3000/img/default_profile_bigger.png"
+      style={{
+        width: 50,
+        height: 50,
+        borderRadius: 400 / 2,
+      }}
+    />
+    <h1>Home</h1>
     <Tweets />
   </div>
 );

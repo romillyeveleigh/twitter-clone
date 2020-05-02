@@ -5,6 +5,10 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+
 class LikeButton extends Component {
   constructor(props) {
     super(props);
@@ -74,12 +78,18 @@ class LikeButton extends Component {
       <Fragment>
         <span>
           {this.getLikeStatus(message, authUser, likes) ? (
-            <button onClick={this.onRemoveLike}>Unlike</button>
+            <FontAwesomeIcon
+              icon={faHeartSolid}
+              onClick={this.onRemoveLike}
+            />
           ) : (
-            <button onClick={this.onCreateLike}>Like</button>
+            <FontAwesomeIcon
+              icon={faHeart}
+              onClick={this.onCreateLike}
+            />
           )}
         </span>
-        <span>{this.getLikeCount(message, likes)}</span>
+        <span> {this.getLikeCount(message, likes)}</span>
       </Fragment>
     );
   }

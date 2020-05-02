@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
 import Moment from 'react-moment';
 
 import { withFirebase } from '../Firebase';
 
 import { Tweets } from '../Tweets';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 
 class UserProfileItem extends Component {
   constructor(props) {
@@ -67,21 +72,38 @@ class UserProfileItem extends Component {
 
     return (
       <div>
-        User Profile ({this.props.match.params.id})
         {loading && <div>Loading ...</div>}
         {user && (
           <div>
-            Username: <strong>{user.username}</strong>
+            <Link to="/home">
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </Link>
+            {user.username}
             <br />
-            Handle: @{user.username.toLowerCase().replace(/ /g, '')}
+            {this.state.count ? this.state.count : 0} Tweets
             <br />
-            Joined:{' '}
+            <br />
+            <img
+              src="http://localhost:3000/img/default_profile_bigger.png"
+              style={{
+                width: 50,
+                height: 50,
+                borderRadius: 400 / 2,
+              }}
+            />
+            <h1>{user.username}</h1>@
+            {user.username.toLowerCase().replace(/ /g, '')}
+            <br />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua.
+            <br />
+            <FontAwesomeIcon icon={faCalendarAlt} /> Joined:{' '}
             <Moment format="MMMM YYYY">{user.joinedAt}</Moment>
             <br />
-            Following: <br />
-            Followers: <br />
-            Tweet count: {this.state.count} <br />
-            Tweets: <Tweets filterById={this.props.match.params.id} />
+            Tweets
+            <br />
+            <Tweets filterById={this.props.match.params.id} />
           </div>
         )}
       </div>

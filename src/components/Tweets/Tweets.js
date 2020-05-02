@@ -126,20 +126,23 @@ class Tweets extends Component {
       <>
         {loading && <div>Loading ...</div>}
 
-        {!loading && !this.props.filterById && (
-          <form
-            onSubmit={event =>
-              this.onCreateMessage(event, this.props.authUser)
-            }
-          >
-            <input
-              type="text"
-              value={text}
-              onChange={this.onChangeText}
-            />
-            <button type="submit">Send</button>
-          </form>
-        )}
+        {!loading &&
+          !this.props.filterById &&
+          !this.props.filterByReply && (
+            <form
+              onSubmit={event =>
+                this.onCreateMessage(event, this.props.authUser)
+              }
+            >
+              <input
+                type="text"
+                placeholder="Whats happening?"
+                value={text}
+                onChange={this.onChangeText}
+              />
+              <button type="submit">Tweet</button>
+            </form>
+          )}
 
         {messages && (
           <TweetList
@@ -151,11 +154,13 @@ class Tweets extends Component {
           />
         )}
 
-        {!loading && messages && (
-          <button type="button" onClick={this.onNextPage}>
-            More
-          </button>
-        )}
+        {!loading &&
+          messages.length > 4 &&
+          !this.props.filterByReply && (
+            <button type="button" onClick={this.onNextPage}>
+              More
+            </button>
+          )}
 
         {!messages && <div>There are no messages ...</div>}
       </>

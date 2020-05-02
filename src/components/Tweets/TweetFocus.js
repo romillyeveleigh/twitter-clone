@@ -128,6 +128,7 @@ class TweetFocus extends Component {
               type="text"
               value={text}
               onChange={this.onChangeText}
+              placeholder="Tweet your reply..."
             />
             <button type="submit">Reply</button>
           </form>

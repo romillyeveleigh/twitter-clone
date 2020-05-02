@@ -42,7 +42,6 @@ class RepliesItem extends Component {
 
     return (
       <div>
-        Tweet ID: {this.props.match.params.uid}
         {loading && <div>Loading ...</div>}
         {!loading && this.props.match.params.uid && (
           <div>

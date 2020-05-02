@@ -10,6 +10,13 @@ import { withFirebase } from '../Firebase';
 
 import LikeButton from './LikeButton';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCommentAlt,
+  faTrashAlt,
+  faEdit,
+} from '@fortawesome/free-regular-svg-icons';
+
 class TweetItem extends Component {
   constructor(props) {
     super(props);
@@ -99,59 +106,53 @@ class TweetItem extends Component {
           />
         ) : (
           <span>
-            Profile image:
+            <img
+              src="http://localhost:3000/img/default_profile_bigger.png"
+              style={{
+                width: 50,
+                height: 50,
+                borderRadius: 400 / 2,
+              }}
+            />
             <br />
-            Username:{' '}
-            <strong>
+            <small>
+              {message.replyToId && (
+                <div>
+                  Replying to{' '}
+                  <Link to={`${ROUTES.REPLIES}/${message.replyTo}`}>
+                    @{this.getUsernameFromUserId(message.replyToId)}
+                  </Link>
+                  <br />
+                </div>
+              )}
+            </small>
+            <Link to={`${ROUTES.USER_PROFILE}/${message.userId}`}>
               {this.getUsernameFromUserId(message.userId)}
-            </strong>
-            <br />
-            Handle: @
+            </Link>
+            <br />@
             {this.getUsernameFromUserId(message.userId) !==
               undefined &&
               this.getUsernameFromUserId(message.userId)
                 .toLowerCase()
                 .replace(/ /g, '')}
             <br />
-            <Link to={`${ROUTES.USER_PROFILE}/${message.userId}`}>
-              User details
-            </Link>
-            <br />
-            Time tweeted:{' '}
+            {'• '}
             <Moment fromNow ago>
               {message.createdAt}
             </Moment>
             <br />
-            Tweet text: {message.text}
-            <br />
             <Link to={`${ROUTES.REPLIES}/${message.uid}`}>
-              Tweet details
+              <strong>{message.text}</strong>
             </Link>
             <br />
-            Replied to:{' '}
-            {message.replyToId &&
-              this.getUsernameFromUserId(message.replyToId)}{' '}
+            <FontAwesomeIcon icon={faCommentAlt} /> {this.state.count}
             <br />
-            Reply to:{' '}
-            {message.replyTo && (
-              <Link to={`${ROUTES.REPLIES}/${message.replyTo}`}>
-                this tweet
-              </Link>
-            )}
-            <br />
-            Replies: <strong>{this.state.count}</strong>
-            <br />
-            Retweets:
-            <br />
-            Like button:{' '}
             <LikeButton
               authUser={authUser}
               key={message.uid}
               message={message}
               likes={likes}
             />
-            <br />
-            {message.editedAt && <span>(Edited)</span>}
           </span>
         )}
 
@@ -163,16 +164,20 @@ class TweetItem extends Component {
                 <button onClick={this.onToggleEditMode}>Reset</button>
               </span>
             ) : (
-              <button onClick={this.onToggleEditMode}>Edit</button>
+              <div>
+                {' '}
+                <FontAwesomeIcon
+                  icon={faEdit}
+                  onClick={this.onToggleEditMode}
+                />
+              </div>
             )}
 
             {!editMode && (
-              <button
-                type="button"
+              <FontAwesomeIcon
+                icon={faTrashAlt}
                 onClick={() => onRemoveMessage(message.uid)}
-              >
-                Delete
-              </button>
+              />
             )}
           </span>
         )}

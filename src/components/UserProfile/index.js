@@ -8,7 +8,6 @@ import * as ROUTES from '../../constants/routes';
 
 const UserProfilePage = () => (
   <div>
-    <h1>User Profile Page</h1>
     <Route
       exact
       path={ROUTES.USER_PROFILE_DETAILS}

@@ -42,8 +42,6 @@ class UserList extends Component {
 
     return (
       <div>
-        <h2>Users</h2>
-
         <form onSubmit={e => e.preventDefault()}>
           <input
             id="search"
@@ -64,16 +62,20 @@ class UserList extends Component {
               )
               .map(user => (
                 <li key={user.uid}>
-                  Profile image:
-                  <br />
-                  Username: <strong>{user.username}</strong>
-                  <br />
-                  Handle: @
-                  {user.username.toLowerCase().replace(/ /g, '')}
+                  <img
+                    src="http://localhost:3000/img/default_profile_bigger.png"
+                    style={{
+                      width: 50,
+                      height: 50,
+                      borderRadius: 400 / 2,
+                    }}
+                  />
                   <br />
                   <Link to={`${ROUTES.USER_PROFILE}/${user.uid}`}>
-                    Details
+                    {user.username}
                   </Link>
+                  <br />@
+                  {user.username.toLowerCase().replace(/ /g, '')}
                 </li>
               ))}
         </ul>
