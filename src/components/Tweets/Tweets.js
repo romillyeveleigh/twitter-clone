@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
@@ -130,19 +130,31 @@ class Tweets extends Component {
         {!loading &&
           !this.props.filterById &&
           !this.props.filterByReply && (
-            <form
-              onSubmit={event =>
-                this.onCreateMessage(event, this.props.authUser)
-              }
-            >
-              <input
-                type="text"
-                placeholder="Whats happening?"
-                value={text}
-                onChange={this.onChangeText}
+            <Fragment>
+              <img
+                src={`https://api.adorable.io/avatars/50/${
+                  this.props.authUser.uid
+                }`}
+                style={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 400 / 2,
+                }}
               />
-              <button type="submit">Tweet</button>
-            </form>
+              <form
+                onSubmit={event =>
+                  this.onCreateMessage(event, this.props.authUser)
+                }
+              >
+                <input
+                  type="text"
+                  placeholder="Whats happening?"
+                  value={text}
+                  onChange={this.onChangeText}
+                />
+                <button type="submit">Tweet</button>
+              </form>
+            </Fragment>
           )}
 
         {messages && !loading && (

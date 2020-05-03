@@ -21,8 +21,6 @@ const App = () => (
   <Router>
     <div>
       <ScrollIntoView>
-        <Navigation />
-        <hr />
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -39,6 +37,8 @@ const App = () => (
         />
         <Route path={ROUTES.SEARCH} component={SearchPage} />
         <Route path={ROUTES.REPLIES} component={RepliesPage} />
+        <hr />
+        <Navigation />
       </ScrollIntoView>
     </div>
   </Router>
