@@ -6,6 +6,11 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
+
 class UserList extends Component {
   constructor(props) {
     super(props);
@@ -61,24 +66,32 @@ class UserList extends Component {
                   .includes(text.toUpperCase()),
               )
               .map(user => (
-                <li key={user.uid}>
-                  <img
-                    src={`https://api.adorable.io/avatars/50/${
-                      user.uid
-                    }`}
-                    style={{
-                      width: 50,
-                      height: 50,
-                      borderRadius: 400 / 2,
-                    }}
-                  />
-                  <br />
-                  <Link to={`${ROUTES.USER_PROFILE}/${user.uid}`}>
-                    {user.username}
-                  </Link>
-                  <br />@
-                  {user.username.toLowerCase().replace(/ /g, '')}
-                </li>
+                <TransitionGroup>
+                  <CSSTransition
+                    key={user.uid}
+                    timeout={400}
+                    classNames="my-node"
+                  >
+                    <li key={user.uid}>
+                      <img
+                        src={`https://api.adorable.io/avatars/50/${
+                          user.uid
+                        }`}
+                        style={{
+                          width: 50,
+                          height: 50,
+                          borderRadius: 400 / 2,
+                        }}
+                      />
+                      <br />
+                      <Link to={`${ROUTES.USER_PROFILE}/${user.uid}`}>
+                        {user.username}
+                      </Link>
+                      <br />@
+                      {user.username.toLowerCase().replace(/ /g, '')}
+                    </li>
+                  </CSSTransition>
+                </TransitionGroup>
               ))}
         </ul>
       </div>

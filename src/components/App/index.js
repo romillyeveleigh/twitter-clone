@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './app.css';
 
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
@@ -21,6 +22,8 @@ const App = () => (
   <Router>
     <div>
       <ScrollIntoView>
+        <Navigation />
+        <hr />
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -37,8 +40,6 @@ const App = () => (
         />
         <Route path={ROUTES.SEARCH} component={SearchPage} />
         <Route path={ROUTES.REPLIES} component={RepliesPage} />
-        <hr />
-        <Navigation />
       </ScrollIntoView>
     </div>
   </Router>

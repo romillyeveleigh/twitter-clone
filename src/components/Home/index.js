@@ -4,6 +4,8 @@ import { compose } from 'recompose';
 import { withAuthorization, withEmailVerification } from '../Session';
 import { Tweets } from '../Tweets';
 
+import Fade from 'react-reveal/Zoom';
+
 const HomePage = props => {
   return (
     <div>
