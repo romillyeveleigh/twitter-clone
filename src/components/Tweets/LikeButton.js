@@ -76,7 +76,7 @@ class LikeButton extends Component {
 
     return (
       <Fragment>
-        <span>
+        <div className="tweet-icon-item">
           {this.getLikeStatus(message, authUser, likes) ? (
             <FontAwesomeIcon
               icon={faHeartSolid}
@@ -88,8 +88,8 @@ class LikeButton extends Component {
               onClick={this.onCreateLike}
             />
           )}
-        </span>
-        <span> {this.getLikeCount(message, likes)}</span>
+          <small> {this.getLikeCount(message, likes)}</small>
+        </div>
       </Fragment>
     );
   }

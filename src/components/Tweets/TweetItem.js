@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
@@ -97,99 +97,143 @@ class TweetItem extends Component {
     this.getReplyCount();
 
     return (
-      <li>
-        {editMode ? (
-          <input
-            type="text"
-            value={editText}
-            onChange={this.onChangeEditText}
-          />
-        ) : (
-          <span>
-            <img
-              src={`https://api.adorable.io/avatars/50/${
-                message.userId
-              }`}
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 400 / 2,
-              }}
-            />
-            <br />
-            <small>
-              {message.replyToId && (
-                <div>
-                  Replying to{' '}
-                  <Link to={`${ROUTES.REPLIES}/${message.replyTo}`}>
-                    @{this.getUsernameFromUserId(message.replyToId)}
-                  </Link>
-                  <br />
-                </div>
-              )}
-            </small>
-            <Link to={`${ROUTES.USER_PROFILE}/${message.userId}`}>
-              {this.getUsernameFromUserId(message.userId)}
-            </Link>
-            <br />@
-            {this.getUsernameFromUserId(message.userId) !==
-              undefined &&
-              this.getUsernameFromUserId(message.userId)
-                .toLowerCase()
-                .replace(/ /g, '')}
-            <br />
-            {'• '}
-            <Moment fromNow ago>
-              {message.createdAt}
-            </Moment>
-            <br />
-            <Link to={`${ROUTES.REPLIES}/${message.uid}`}>
-              <strong>{message.text}</strong>
-            </Link>
-            <br />
-            <Link
-              onClick={() => this.props.onSetUsers({})}
-              to={`${ROUTES.REPLIES}/${message.uid}`}
-            >
-              <FontAwesomeIcon icon={faCommentAlt} />{' '}
-              {this.state.count}
-            </Link>
-            <br />
-            <LikeButton
-              authUser={authUser}
-              key={message.uid}
-              message={message}
-              likes={likes}
-            />
-          </span>
-        )}
-
-        {authUser.uid === message.userId && (
-          <span>
-            {editMode ? (
-              <span>
-                <button onClick={this.onSaveEditText}>Save</button>
-                <button onClick={this.onToggleEditMode}>Reset</button>
-              </span>
-            ) : (
-              <div>
-                {' '}
-                <FontAwesomeIcon
-                  icon={faEdit}
-                  onClick={this.onToggleEditMode}
+      <Fragment>
+        <div className="content-section">
+          <div className="tweets-container">
+            <div className="tweet-wrapper">
+              {editMode ? (
+                <input
+                  type="text"
+                  value={editText}
+                  onChange={this.onChangeEditText}
                 />
-              </div>
-            )}
+              ) : (
+                <Fragment>
+                  <div className="tweet-left-box">
+                    <img
+                      src={`https://api.adorable.io/avatars/50/${
+                        message.userId
+                      }`}
+                      alt=""
+                      className="avatar"
+                    />
+                  </div>
+                  <div className="tweet-right-box">
+                    <div className="tweet-message-replied">
+                      <div className="tweet-message-text-replied">
+                        {message.replyToId && (
+                          <Link
+                            to={`${ROUTES.REPLIES}/${
+                              message.replyTo
+                            }`}
+                          >
+                            Replying to @
+                            {this.getUsernameFromUserId(
+                              message.replyToId,
+                            )}
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                    <div className="tweet-author-row">
+                      <div className="tweet-username-handle">
+                        <div className="tweet-username">
+                          <Link
+                            to={`${ROUTES.USER_PROFILE}/${
+                              message.userId
+                            }`}
+                          >
+                            {this.getUsernameFromUserId(
+                              message.userId,
+                            )}
+                          </Link>
+                        </div>
+                        <div className="tweet-handle">
+                          @
+                          {this.getUsernameFromUserId(
+                            message.userId,
+                          ) !== undefined &&
+                            this.getUsernameFromUserId(message.userId)
+                              .toLowerCase()
+                              .replace(/ /g, '')}
+                        </div>
+                        <div className="text-block-6">
+                          {'· '}
+                          <Moment fromNow ago>
+                            {message.createdAt}
+                          </Moment>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="tweet-message-replied">
+                      <div className="tweet-message-text">
+                        <Link to={`${ROUTES.REPLIES}/${message.uid}`}>
+                          {message.text}
+                        </Link>
+                      </div>
+                    </div>
+                    <div className="tweet-icon-row">
+                      <div className="tweet-username-handle">
+                        <div className="tweet-icon-item">
+                          <Link
+                            onClick={() => this.props.onSetUsers({})}
+                            to={`${ROUTES.REPLIES}/${message.uid}`}
+                          >
+                            <FontAwesomeIcon icon={faCommentAlt} />{' '}
+                            <small>{this.state.count}</small>
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="div-block-9">
+                        <LikeButton
+                          authUser={authUser}
+                          key={message.uid}
+                          message={message}
+                          likes={likes}
+                        />
+                      </div>
 
-            {!editMode && (
-              <FontAwesomeIcon
-                icon={faTrashAlt}
-                onClick={() => onRemoveMessage(message.uid)}
-              />
-            )}
-          </span>
-        )}
-      </li>
+                      <div className="div-block-9">
+                        <div className="tweet-icon-item">
+                          {authUser.uid === message.userId &&
+                            !editMode && (
+                              <FontAwesomeIcon
+                                icon={faEdit}
+                                onClick={this.onToggleEditMode}
+                              />
+                            )}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="tweet-icon-item">
+                          {authUser.uid === message.userId &&
+                            !editMode && (
+                              <FontAwesomeIcon
+                                icon={faTrashAlt}
+                                onClick={() =>
+                                  onRemoveMessage(message.uid)
+                                }
+                              />
+                            )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Fragment>
+              )}
+
+              {authUser.uid === message.userId && editMode && (
+                <span>
+                  <button onClick={this.onSaveEditText}>Save</button>
+                  <button onClick={this.onToggleEditMode}>
+                    Reset
+                  </button>
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      </Fragment>
     );
   }
 }

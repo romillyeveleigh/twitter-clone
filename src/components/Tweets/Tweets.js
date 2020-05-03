@@ -131,29 +131,55 @@ class Tweets extends Component {
           !this.props.filterById &&
           !this.props.filterByReply && (
             <Fragment>
-              <img
-                src={`https://api.adorable.io/avatars/50/${
-                  this.props.authUser.uid
-                }`}
-                style={{
-                  width: 50,
-                  height: 50,
-                  borderRadius: 400 / 2,
-                }}
-              />
-              <form
-                onSubmit={event =>
-                  this.onCreateMessage(event, this.props.authUser)
-                }
-              >
-                <input
-                  type="text"
-                  placeholder="Whats happening?"
-                  value={text}
-                  onChange={this.onChangeText}
-                />
-                <button type="submit">Tweet</button>
-              </form>
+              <div className="content-section">
+                <div className="tweets-container">
+                  <div className="tweet-wrapper">
+                    <div className="tweet-left-box">
+                      <img
+                        src={`https://api.adorable.io/avatars/50/${
+                          this.props.authUser.uid
+                        }`}
+                        alt=""
+                        className="avatar"
+                      />
+                    </div>
+                    <div className="tweet-right-box">
+                      <div className="form-block w-form">
+                        <form
+                          id="email-form"
+                          name="email-form"
+                          dataname="Email Form"
+                          className="form w-clearfix"
+                          onSubmit={event =>
+                            this.onCreateMessage(
+                              event,
+                              this.props.authUser,
+                            )
+                          }
+                        >
+                          <textarea
+                            placeholder="Whats happening?"
+                            maxLength="5000"
+                            id="tweet"
+                            name="tweet"
+                            dataname="tweet"
+                            className="textarea w-input"
+                            type="text"
+                            value={text}
+                            onChange={this.onChangeText}
+                          />
+                          <input
+                            type="submit"
+                            value="Tweet"
+                            data-wait="Please wait..."
+                            className="submit-button w-button"
+                          />
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </Fragment>
           )}
 

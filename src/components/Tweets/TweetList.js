@@ -21,26 +21,24 @@ const TweetList = ({
   messagesCopy.reverse();
 
   return (
-    <ul>
-      <TransitionGroup>
-        {messagesCopy.map(message => (
-          <CSSTransition
+    <TransitionGroup>
+      {messagesCopy.map(message => (
+        <CSSTransition
+          key={message.uid}
+          timeout={300}
+          classNames="my-node"
+        >
+          <TweetItem
+            authUser={authUser}
             key={message.uid}
-            timeout={300}
-            classNames="my-node"
-          >
-            <TweetItem
-              authUser={authUser}
-              key={message.uid}
-              message={message}
-              likes={likes}
-              onEditMessage={onEditMessage}
-              onRemoveMessage={onRemoveMessage}
-            />
-          </CSSTransition>
-        ))}
-      </TransitionGroup>
-    </ul>
+            message={message}
+            likes={likes}
+            onEditMessage={onEditMessage}
+            onRemoveMessage={onRemoveMessage}
+          />
+        </CSSTransition>
+      ))}
+    </TransitionGroup>
   );
 };
 
