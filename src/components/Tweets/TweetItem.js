@@ -102,11 +102,138 @@ class TweetItem extends Component {
           <div className="tweets-container">
             <div className="tweet-wrapper">
               {editMode ? (
-                <input
-                  type="text"
-                  value={editText}
-                  onChange={this.onChangeEditText}
-                />
+                <Fragment>
+                  <div className="tweet-left-box">
+                    <img
+                      src={`https://api.adorable.io/avatars/50/${
+                        message.userId
+                      }`}
+                      alt=""
+                      className="avatar"
+                    />
+                  </div>
+                  <div className="tweet-right-box">
+                    <div className="tweet-message-replied">
+                      <div className="tweet-message-text-replied">
+                        {message.replyToId && (
+                          <Link
+                            to={`${ROUTES.REPLIES}/${
+                              message.replyTo
+                            }`}
+                          >
+                            Replying to @
+                            {this.getUsernameFromUserId(
+                              message.replyToId,
+                            )}
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                    <div className="tweet-author-row">
+                      <div className="tweet-username-handle">
+                        <div className="tweet-username">
+                          <Link
+                            to={`${ROUTES.USER_PROFILE}/${
+                              message.userId
+                            }`}
+                          >
+                            {this.getUsernameFromUserId(
+                              message.userId,
+                            )}
+                          </Link>
+                        </div>
+                        <div className="tweet-handle">
+                          @
+                          {this.getUsernameFromUserId(
+                            message.userId,
+                          ) !== undefined &&
+                            this.getUsernameFromUserId(message.userId)
+                              .toLowerCase()
+                              .replace(/ /g, '')}
+                        </div>
+                        <div className="text-block-6">
+                          {'· '}
+                          <Moment fromNow ago>
+                            {message.createdAt}
+                          </Moment>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="tweet-message-replied">
+                      <div className="tweet-message-text">
+                        <input
+                          type="textbox"
+                          value={editText}
+                          onChange={this.onChangeEditText}
+                          style={{
+                            width: '95%',
+                          }}
+                        />
+                        <div>
+                          {' '}
+                          <button
+                            className="y-button"
+                            onClick={this.onSaveEditText}
+                          >
+                            Save
+                          </button>
+                          <button
+                            className="y-button"
+                            onClick={this.onToggleEditMode}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="tweet-icon-row">
+                      <div className="tweet-username-handle">
+                        <div className="tweet-icon-item">
+                          <Link
+                            onClick={() => this.props.onSetUsers({})}
+                            to={`${ROUTES.REPLIES}/${message.uid}`}
+                          >
+                            <FontAwesomeIcon icon={faCommentAlt} />{' '}
+                            <small>{this.state.count}</small>
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="div-block-9">
+                        <LikeButton
+                          authUser={authUser}
+                          key={message.uid}
+                          message={message}
+                          likes={likes}
+                        />
+                      </div>
+
+                      <div className="div-block-9">
+                        <div className="tweet-icon-item">
+                          {authUser.uid === message.userId &&
+                            !editMode && (
+                              <FontAwesomeIcon
+                                icon={faEdit}
+                                onClick={this.onToggleEditMode}
+                              />
+                            )}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="tweet-icon-item">
+                          {authUser.uid === message.userId &&
+                            !editMode && (
+                              <FontAwesomeIcon
+                                icon={faTrashAlt}
+                                onClick={() =>
+                                  onRemoveMessage(message.uid)
+                                }
+                              />
+                            )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Fragment>
               ) : (
                 <Fragment>
                   <div className="tweet-left-box">
@@ -220,15 +347,6 @@ class TweetItem extends Component {
                     </div>
                   </div>
                 </Fragment>
-              )}
-
-              {editMode && (
-                <span>
-                  <button onClick={this.onSaveEditText}>Save</button>
-                  <button onClick={this.onToggleEditMode}>
-                    Reset
-                  </button>
-                </span>
               )}
             </div>
           </div>

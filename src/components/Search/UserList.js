@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import {
   CSSTransition,
@@ -47,53 +50,108 @@ class UserList extends Component {
 
     return (
       <div>
-        <form onSubmit={e => e.preventDefault()}>
-          <input
-            id="search"
-            type="search"
-            placeholder="Search..."
-            ref={text}
-            onChange={this.onChange}
-          />
-        </form>
+        <Fragment>
+          <div class="content-section">
+            <div class="tweets-container">
+              <div class="search-box-wrapper">
+                <div class="search-box">
+                  <div class="div-block-17">
+                    <div class="div-block-15">
+                      <div class="div-block-16">
+                        <div>
+                          <FontAwesomeIcon icon={faSearch} />
+                        </div>
+                      </div>
+                      <div class="form-block-2 w-form">
+                        <form
+                          id="email-form-2"
+                          name="email-form-2"
+                          data-name="Email Form 2"
+                          onSubmit={e => e.preventDefault()}
+                        >
+                          <input
+                            type="text"
+                            id="search"
+                            ref={text}
+                            class="user-search-text w-input2"
+                            maxlength="256"
+                            name="name"
+                            data-name="Name"
+                            placeholder=""
+                            id="name"
+                            onChange={this.onChange}
+                          />
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Fragment>
         {loading && <div>Loading ...</div>}
-        <ul>
-          {!loading &&
-            users
-              .filter(user =>
-                user.username
-                  .toUpperCase()
-                  .includes(text.toUpperCase()),
-              )
-              .map(user => (
-                <TransitionGroup>
-                  <CSSTransition
-                    key={user.uid}
-                    timeout={400}
-                    classNames="my-node"
-                  >
-                    <li key={user.uid}>
-                      <img
-                        src={`https://api.adorable.io/avatars/50/${
-                          user.uid
-                        }`}
-                        style={{
-                          width: 50,
-                          height: 50,
-                          borderRadius: 400 / 2,
-                        }}
-                      />
-                      <br />
-                      <Link to={`${ROUTES.USER_PROFILE}/${user.uid}`}>
-                        {user.username}
-                      </Link>
-                      <br />@
-                      {user.username.toLowerCase().replace(/ /g, '')}
-                    </li>
-                  </CSSTransition>
-                </TransitionGroup>
-              ))}
-        </ul>
+
+        {!loading &&
+          users
+            .filter(user =>
+              user.username
+                .toUpperCase()
+                .includes(text.toUpperCase()),
+            )
+            .map(user => (
+              <TransitionGroup>
+                <CSSTransition
+                  key={user.uid}
+                  timeout={200}
+                  classNames="my-node"
+                >
+                  <Fragment>
+                    <div className="content-section">
+                      <div className="tweets-container">
+                        <div
+                          className="search-result-wrapper"
+                          key={user.uid}
+                        >
+                          <div className="title-left-box">
+                            <img
+                              src={`https://api.adorable.io/avatars/50/${
+                                user.uid
+                              }`}
+                              alt=""
+                              className="avatar"
+                            />
+                          </div>
+                          <div className="search-result-right-box">
+                            <div className="tweet-author-row">
+                              <div className="tweet-username-handle">
+                                <div className="tweet-username">
+                                  <Link
+                                    to={`${ROUTES.USER_PROFILE}/${
+                                      user.uid
+                                    }`}
+                                  >
+                                    {user.username}
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="tweet-message-replied">
+                              <div className="tweet-handle">
+                                @
+                                {user.username
+                                  .toLowerCase()
+                                  .replace(/ /g, '')}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Fragment>
+                </CSSTransition>
+              </TransitionGroup>
+            ))}
       </div>
     );
   }

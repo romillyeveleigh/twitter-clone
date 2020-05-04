@@ -85,6 +85,7 @@ class Tweets extends Component {
 
   componentWillUnmount() {
     this.props.firebase.messages().off();
+    this.props.onSetMessagesLimit(5);
   }
 
   onChangeText = event => {
@@ -118,7 +119,13 @@ class Tweets extends Component {
   };
 
   onNextPage = () => {
-    this.props.onSetMessagesLimit(this.props.limit + 5);
+    this.props.onSetMessagesLimit(this.props.limit + 6);
+  };
+
+  onChange = isVisible => {
+    if (isVisible) {
+      this.onNextPage();
+    }
   };
 
   topFunction = () => {
@@ -209,21 +216,23 @@ class Tweets extends Component {
         )}
 
         {!loading &&
-          messages.length > 4 &&
-          !this.props.filterByReply && (
-            <VisibilitySensor onChange={this.onNextPage}>
-              <button
-                onClick={() =>
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  })
-                }
-              >
-                Back to top
-              </button>
-            </VisibilitySensor>
-          )}
+        messages.length > 4 &&
+        !this.props.filterByReply ? (
+          <VisibilitySensor onChange={this.onChange}>
+            <button
+              onClick={() =>
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                })
+              }
+            >
+              Back to top
+            </button>
+          </VisibilitySensor>
+        ) : (
+          <br />
+        )}
 
         {!messages && <div>There are no messages ...</div>}
       </>
