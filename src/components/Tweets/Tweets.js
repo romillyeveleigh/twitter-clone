@@ -184,6 +184,17 @@ class Tweets extends Component {
                   </div>
                 </div>
               </div>
+              <div className="content-section">
+                <div className="tweets-container">
+                  <div
+                    className="tweet-wrapper"
+                    style={{
+                      background: '#d3d3d3',
+                      height: '10px',
+                    }}
+                  />
+                </div>
+              </div>
             </Fragment>
           )}
 

@@ -25,7 +25,7 @@ const TweetList = ({
       {messagesCopy.map(message => (
         <CSSTransition
           key={message.uid}
-          timeout={300}
+          timeout={200}
           classNames="my-node"
         >
           <TweetItem

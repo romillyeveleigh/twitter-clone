@@ -7,7 +7,20 @@ import { Tweets } from '../Tweets';
 const HomePage = props => {
   return (
     <div>
-      <h1>Home</h1>
+      <div class="content-section">
+        <div class="tweets-container">
+          <div class="top-box-wrapper">
+            <div class="title-left-box">
+              <div
+                class="top-box-title"
+                style={{ cursor: 'pointer' }}
+              >
+                Home
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <Tweets />
     </div>
   );

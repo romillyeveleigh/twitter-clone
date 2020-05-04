@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
@@ -119,19 +119,68 @@ class TweetFocus extends Component {
           />
         )}
         {!this.props.filterById && (
-          <form
-            onSubmit={event =>
-              this.onCreateMessage(event, this.props.authUser)
-            }
-          >
-            <input
-              type="text"
-              value={text}
-              onChange={this.onChangeText}
-              placeholder="Tweet your reply..."
-            />
-            <button type="submit">Reply</button>
-          </form>
+          <Fragment>
+            <div className="content-section">
+              <div className="tweets-container">
+                <div className="tweet-wrapper">
+                  <div className="tweet-left-box">
+                    <img
+                      src={`https://api.adorable.io/avatars/50/${
+                        this.props.authUser.uid
+                      }`}
+                      alt=""
+                      className="avatar"
+                    />
+                  </div>
+                  <div className="tweet-right-box">
+                    <div className="form-block w-form">
+                      <form
+                        id="email-form"
+                        name="email-form"
+                        dataname="Email Form"
+                        className="form w-clearfix"
+                        onSubmit={event =>
+                          this.onCreateMessage(
+                            event,
+                            this.props.authUser,
+                          )
+                        }
+                      >
+                        <textarea
+                          placeholder="Tweet your reply"
+                          maxLength="5000"
+                          id="tweet"
+                          name="tweet"
+                          dataname="tweet"
+                          className="textarea w-input"
+                          type="text"
+                          value={text}
+                          onChange={this.onChangeText}
+                        />
+                        <input
+                          type="submit"
+                          value="Reply"
+                          data-wait="Please wait..."
+                          className="submit-button w-button"
+                        />
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="content-section">
+              <div className="tweets-container">
+                <div
+                  className="tweet-wrapper"
+                  style={{
+                    background: '#d3d3d3',
+                    height: '10px',
+                  }}
+                />
+              </div>
+            </div>
+          </Fragment>
         )}
 
         {!message && <div>Message not found ...</div>}

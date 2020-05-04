@@ -222,7 +222,7 @@ class TweetItem extends Component {
                 </Fragment>
               )}
 
-              {authUser.uid === message.userId && editMode && (
+              {editMode && (
                 <span>
                   <button onClick={this.onSaveEditText}>Save</button>
                   <button onClick={this.onToggleEditMode}>

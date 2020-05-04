@@ -3,7 +3,7 @@
 }
 .my-node-enter-active {
   opacity: 1;
-  transition: opacity 550ms;
+  transition: opacity 500ms;
   transition-timing-function: ease-out;
 }
 .my-node-exit {
@@ -11,5 +11,5 @@
 }
 .my-node-exit-active {
   opacity: 0;
-  transition: opacity 100ms;
+  transition: opacity 500ms;
 }

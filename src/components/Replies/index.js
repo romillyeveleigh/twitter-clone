@@ -12,10 +12,20 @@ import * as ROUTES from '../../constants/routes';
 
 const RepliesPage = props => (
   <div>
-    <Link to="/home">
-      <FontAwesomeIcon icon={faArrowLeft} />
-    </Link>
-    <h1>Tweet</h1>
+    <div class="content-section">
+      <div class="tweets-container">
+        <div class="top-box-wrapper">
+          <div class="title-left-box">
+            <div class="top-box-title" style={{ cursor: 'pointer' }}>
+              <Link to="/home" style={{ fontweight: '400px' }}>
+                <FontAwesomeIcon icon={faArrowLeft} />
+                {'   '}Tweet
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <Route
       exact
       path={ROUTES.REPLIES_DETAILS}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -75,36 +75,89 @@ class UserProfileItem extends Component {
         {loading && <div>Loading ...</div>}
         {user && (
           <div>
-            <Link to="/home">
-              <FontAwesomeIcon icon={faArrowLeft} />
-            </Link>
-            {user.username}
-            <br />
-            {this.state.count ? this.state.count : 0} Tweets
-            <br />
-            <br />
-            <img
-              src={`https://api.adorable.io/avatars/50/${
-                this.props.match.params.id
-              }`}
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 400 / 2,
-              }}
-            />
-            <h1>{user.username}</h1>@
-            {user.username.toLowerCase().replace(/ /g, '')}
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua.
-            <br />
-            <FontAwesomeIcon icon={faCalendarAlt} /> Joined:{' '}
-            <Moment format="MMMM YYYY">{user.joinedAt}</Moment>
-            <br />
-            Tweets
-            <br />
+            <Fragment>
+              <div class="content-section">
+                <div class="tweets-container">
+                  <div class="top-box-wrapper">
+                    <div class="title-left-box">
+                      <div
+                        class="top-box-title"
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <Link to="/home">
+                          <FontAwesomeIcon icon={faArrowLeft} />
+                          {'   '}
+                          {user.username}{' '}
+                        </Link>
+                        <div
+                          style={{
+                            fontSize: '12px',
+                            marginLeft: '22px',
+                            fontWeight: '400',
+                          }}
+                        >
+                          {this.state.count ? this.state.count : 0}{' '}
+                          Tweets
+                          <br />{' '}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Fragment>
+            <Fragment>
+              <div className="content-section">
+                <div className="tweets-container">
+                  <div className="profile-box-wrapper">
+                    <div className="div-block-12">
+                      <img
+                        src={`https://api.adorable.io/avatars/100/${
+                          this.props.match.params.id
+                        }`}
+                        alt=""
+                        className="avatar-large"
+                      />
+                    </div>
+
+                    <div className="profile-lower-box">
+                      <div className="profile-username">
+                        {user.username}
+                      </div>
+                      <div className="tweet-handle">
+                        @
+                        {user.username
+                          .toLowerCase()
+                          .replace(/ /g, '')}
+                      </div>
+
+                      <div className="text-block-6-copy">
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod teasdfasfdsfd
+                        asfd asmpor incididunt ut labore et dolore
+                        magna aliqua.
+                      </div>
+
+                      <div className="text-block-6-copy">
+                        <FontAwesomeIcon icon={faCalendarAlt} />{' '}
+                        Joined:{' '}
+                        <Moment format="MMMM YYYY">
+                          {user.joinedAt}
+                        </Moment>
+                      </div>
+                    </div>
+
+                    <div className="div-block-14">
+                      <div className="div-block-13">
+                        <div className="tweet-message-replied-copy">
+                          Tweets
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Fragment>
             <Tweets filterById={this.props.match.params.id} />
           </div>
         )}

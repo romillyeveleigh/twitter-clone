@@ -250,6 +250,43 @@ img {
   font-size: 10px;
 }
 
+.top-box-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border: 1px solid #4a4a4a;
+  -o-object-fit: fill;
+  object-fit: fill;
+}
+
+.title-left-box {
+  padding-top: 15px;
+  padding-left: 10px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.top-box-title {
+  margin-right: 5px;
+  font-size: 19px;
+  font-weight: 800;
+}
+
 .tweet-icon-row {
   display: -webkit-box;
   display: -webkit-flex;
@@ -313,6 +350,10 @@ textarea {
 textarea.w-input,
 textarea.w-select {
   height: auto;
+}
+
+*:focus {
+  outline: none;
 }
 
 .w-button {
@@ -455,6 +496,151 @@ textarea.w-select {
 .tweet-message-text {
   position: relative;
   margin: 2px auto 6px;
+}
+
+.profile-box-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 430px;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border-right: 1px solid #4a4a4a;
+  border-bottom: 1px solid #4a4a4a;
+  border-left: 1px solid #4a4a4a;
+  -o-object-fit: fill;
+  object-fit: fill;
+}
+
+.top-box-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 45px;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border-right: 1px solid #4a4a4a;
+  border-bottom: 1px solid #4a4a4a;
+  border-left: 1px solid #4a4a4a;
+  -o-object-fit: fill;
+  object-fit: fill;
+}
+
+.avatar-large {
+  position: relative;
+  left: 10px;
+  top: 67px;
+  display: block;
+  width: 134px;
+  height: 134px;
+  padding-top: 0px;
+  border: 4px solid #000;
+  border-radius: 400px;
+}
+
+.profile-lower-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 75px;
+  margin: 76px 15px auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+}
+
+.div-block-13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 137px;
+  height: 52px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 3px solid #7f7f7f;
+}
+
+.div-block-14 {
+  margin-top: 10px;
+}
+
+.div-block-12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 200px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  background: white;
+  background-image: url(http://localhost:3000/img/profile-background.jpg);
+  background-position: 0px 0px;
+  background-size: cover;
+}
+
+.profile-username {
+  margin-right: 5px;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.text-block-6-copy {
+  margin-top: 10px;
+}
+
+.tweet-message-replied-copy {
+  display: block;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 479px) {
