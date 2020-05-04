@@ -5,13 +5,15 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import TweetList from './TweetList';
 
+import VisibilitySensor from 'react-visibility-sensor';
+
 class Tweets extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       text: '',
-      loading: false,
+      loading: true,
     };
   }
 
@@ -119,8 +121,13 @@ class Tweets extends Component {
     this.props.onSetMessagesLimit(this.props.limit + 5);
   };
 
+  topFunction = () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  };
+
   render() {
-    const { messages, likes } = this.props;
+    const { messages, likes, authUser } = this.props;
     const { text, loading } = this.state;
 
     return (
@@ -137,7 +144,7 @@ class Tweets extends Component {
                     <div className="tweet-left-box">
                       <img
                         src={`https://api.adorable.io/avatars/50/${
-                          this.props.authUser.uid
+                          authUser.uid
                         }`}
                         alt=""
                         className="avatar"
@@ -151,10 +158,7 @@ class Tweets extends Component {
                           dataname="Email Form"
                           className="form w-clearfix"
                           onSubmit={event =>
-                            this.onCreateMessage(
-                              event,
-                              this.props.authUser,
-                            )
+                            this.onCreateMessage(event, authUser)
                           }
                         >
                           <textarea
@@ -185,7 +189,7 @@ class Tweets extends Component {
 
         {messages && !loading && (
           <TweetList
-            authUser={this.props.authUser}
+            authUser={authUser}
             messages={messages}
             likes={likes}
             onEditMessage={this.onEditMessage}
@@ -196,9 +200,18 @@ class Tweets extends Component {
         {!loading &&
           messages.length > 4 &&
           !this.props.filterByReply && (
-            <button type="button" onClick={this.onNextPage}>
-              More
-            </button>
+            <VisibilitySensor onChange={this.onNextPage}>
+              <button
+                onClick={() =>
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  })
+                }
+              >
+                Back to top
+              </button>
+            </VisibilitySensor>
           )}
 
         {!messages && <div>There are no messages ...</div>}
