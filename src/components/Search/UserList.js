@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
+import Spinner from '../Spinner/Spinner';
+
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
@@ -90,7 +92,7 @@ class UserList extends Component {
             </div>
           </div>
         </Fragment>
-        {loading && <div>Loading ...</div>}
+        {loading && <Spinner />}
 
         {!loading &&
           users
@@ -114,13 +116,22 @@ class UserList extends Component {
                           key={user.uid}
                         >
                           <div className="title-left-box">
-                            <img
-                              src={`https://api.adorable.io/avatars/50/${
-                                user.uid
-                              }`}
-                              alt=""
-                              className="avatar"
-                            />
+                            {user.uid !==
+                            'VVZwP9faTeT4CtrDtHSS7aKDKZO2' ? (
+                              <img
+                                src={`https://api.adorable.io/avatars/100/${
+                                  user.uid
+                                }`}
+                                alt=""
+                                className="avatar"
+                              />
+                            ) : (
+                              <img
+                                src="/img/detective.png"
+                                alt=""
+                                className="avatar"
+                              />
+                            )}
                           </div>
                           <div className="search-result-right-box">
                             <div className="tweet-author-row">

@@ -8,6 +8,8 @@ import { withFirebase } from '../Firebase';
 
 import { Tweets } from '../Tweets';
 
+import Spinner from '../Spinner/Spinner';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
@@ -72,7 +74,7 @@ class UserProfileItem extends Component {
 
     return (
       <div>
-        {loading && <div>Loading ...</div>}
+        {loading && <Spinner />}
         {user && (
           <div>
             <Fragment>
@@ -111,13 +113,21 @@ class UserProfileItem extends Component {
                 <div className="tweets-container">
                   <div className="profile-box-wrapper">
                     <div className="div-block-12">
-                      <img
-                        src={`https://api.adorable.io/avatars/100/${
-                          this.props.match.params.id
-                        }`}
-                        alt=""
-                        className="avatar-large"
-                      />
+                      {user.username !== 'Guest' ? (
+                        <img
+                          src={`https://api.adorable.io/avatars/100/${
+                            this.props.match.params.id
+                          }`}
+                          alt=""
+                          className="avatar-large"
+                        />
+                      ) : (
+                        <img
+                          src="/img/detective.png"
+                          alt=""
+                          className="avatar-large"
+                        />
+                      )}
                     </div>
 
                     <div className="profile-lower-box">

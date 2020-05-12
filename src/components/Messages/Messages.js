@@ -5,6 +5,8 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import MessageList from './MessageList';
 
+import Spinner from '../Spinner/Spinner';
+
 class Messages extends Component {
   constructor(props) {
     super(props);
@@ -91,7 +93,7 @@ class Messages extends Component {
           </button>
         )}
 
-        {loading && <div>Loading ...</div>}
+        {loading && <Spinner />}
 
         {messages && (
           <MessageList

@@ -395,6 +395,7 @@ textarea.w-select {
 }
 
 .tweet-wrapper {
+  background-color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -410,9 +411,9 @@ textarea.w-select {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  border-right: 1px solid #4a4a4a;
-  border-bottom: 1px solid #4a4a4a;
-  border-left: 1px solid #4a4a4a;
+  border-right: 1.5px solid #e6ecf0;
+  border-bottom: 1.5px solid #e6ecf0;
+  border-left: 1.5px solid #e6ecf0;
   -o-object-fit: fill;
   object-fit: fill;
 }
@@ -479,6 +480,7 @@ textarea.w-select {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  background-color: white;
   min-height: 430px;
   margin-right: auto;
   margin-left: auto;
@@ -491,14 +493,15 @@ textarea.w-select {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  border-right: 1px solid #4a4a4a;
-  border-bottom: 1px solid #4a4a4a;
-  border-left: 1px solid #4a4a4a;
+  border-right: 1px solid #e6ecf0;
+  border-bottom: 1px solid #e6ecf0;
+  border-left: 1px solid #e6ecf0;
   -o-object-fit: fill;
   object-fit: fill;
 }
 
 .top-box-wrapper {
+  background-color: #e4e6e7;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -515,7 +518,7 @@ textarea.w-select {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  border: 1px solid #4a4a4a;
+  border: 1px solid #e6ecf0;
   -o-object-fit: fill;
   object-fit: fill;
 }
@@ -637,6 +640,7 @@ textarea.w-select {
 }
 
 .search-result-wrapper {
+  background-color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -653,9 +657,9 @@ textarea.w-select {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  border-right: 1px solid #4a4a4a;
-  border-bottom: 1px solid #4a4a4a;
-  border-left: 1px solid #4a4a4a;
+  border-right: 1px solid #e6ecf0;
+  border-bottom: 1px solid #e6ecf0;
+  border-left: 1px solid #e6ecf0;
   -o-object-fit: fill;
   object-fit: fill;
 }
@@ -684,6 +688,7 @@ textarea.w-select {
 }
 
 .search-box-wrapper {
+  background-color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -700,9 +705,9 @@ textarea.w-select {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  border-right: 1px solid #4a4a4a;
-  border-bottom: 1px solid #4a4a4a;
-  border-left: 1px solid #4a4a4a;
+  border-right: 1px solid #e6ecf0;
+  border-bottom: 1px solid #e6ecf0;
+  border-left: 1px solid #e6ecf0;
   -o-object-fit: fill;
   object-fit: fill;
 }

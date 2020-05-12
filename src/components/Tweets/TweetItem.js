@@ -104,13 +104,22 @@ class TweetItem extends Component {
               {editMode ? (
                 <Fragment>
                   <div className="tweet-left-box">
-                    <img
-                      src={`https://api.adorable.io/avatars/50/${
-                        message.userId
-                      }`}
-                      alt=""
-                      className="avatar"
-                    />
+                    {message.userId !==
+                    'VVZwP9faTeT4CtrDtHSS7aKDKZO2' ? (
+                      <img
+                        src={`https://api.adorable.io/avatars/100/${
+                          message.userId
+                        }`}
+                        alt=""
+                        className="avatar"
+                      />
+                    ) : (
+                      <img
+                        src="/img/detective.png"
+                        alt=""
+                        className="avatar"
+                      />
+                    )}
                   </div>
                   <div className="tweet-right-box">
                     <div className="tweet-message-replied">
@@ -237,13 +246,22 @@ class TweetItem extends Component {
               ) : (
                 <Fragment>
                   <div className="tweet-left-box">
-                    <img
-                      src={`https://api.adorable.io/avatars/50/${
-                        message.userId
-                      }`}
-                      alt=""
-                      className="avatar"
-                    />
+                    {message.userId !==
+                    'VVZwP9faTeT4CtrDtHSS7aKDKZO2' ? (
+                      <img
+                        src={`https://api.adorable.io/avatars/100/${
+                          message.userId
+                        }`}
+                        alt=""
+                        className="avatar"
+                      />
+                    ) : (
+                      <img
+                        src="/img/detective.png"
+                        alt=""
+                        className="avatar"
+                      />
+                    )}
                   </div>
                   <div className="tweet-right-box">
                     <div className="tweet-message-replied">

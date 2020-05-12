@@ -4,6 +4,8 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 
+import Spinner from '../Spinner/Spinner';
+
 class UserItem extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +47,7 @@ class UserItem extends Component {
     return (
       <div>
         <h2>User ({this.props.match.params.id})</h2>
-        {loading && <div>Loading ...</div>}
+        {loading && <Spinner />}
 
         {user && (
           <div>

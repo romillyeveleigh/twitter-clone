@@ -35,7 +35,7 @@ const NavigationAuth = ({ authUser }) => (
           <div class="navbar-left-content">
             <div class="navbar-main-logo-wrapper">
               <img
-                src="/img/logo-alt5.png"
+                src="/img/buzzby-logo.png"
                 alt=""
                 class="navbar-logo"
               />
@@ -129,7 +129,7 @@ const NavigationNonAuth = () => (
           <div class="navbar-left-content">
             <div class="navbar-main-logo-wrapper">
               <img
-                src="/img/logo-alt5.png"
+                src="/img/buzzby-logo.png"
                 alt=""
                 class="navbar-logo"
               />

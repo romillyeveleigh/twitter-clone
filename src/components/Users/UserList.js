@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
+import Spinner from '../Spinner/Spinner';
+
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
@@ -38,7 +40,7 @@ class UserList extends Component {
     return (
       <div>
         <h2>Users</h2>
-        {loading && <div>Loading ...</div>}
+        {loading && <Spinner />}
         <ul>
           {users.map(user => (
             <li key={user.uid}>

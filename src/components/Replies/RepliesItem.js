@@ -5,6 +5,8 @@ import Moment from 'react-moment';
 
 import { withFirebase } from '../Firebase';
 
+import Spinner from '../Spinner/Spinner';
+
 import { TweetFocus, Tweets } from '../Tweets';
 
 class RepliesItem extends Component {
@@ -42,7 +44,7 @@ class RepliesItem extends Component {
 
     return (
       <div>
-        {loading && <div>Loading ...</div>}
+        {loading && <Spinner />}
         {!loading && this.props.match.params.uid && (
           <div>
             <TweetFocus filterByTweet={this.props.match.params.uid} />

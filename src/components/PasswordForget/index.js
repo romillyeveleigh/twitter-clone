@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 const PasswordForgetPage = () => (
   <div>
-    <h1>PasswordForget</h1>
     <PasswordForgetForm />
   </div>
 );
@@ -48,27 +50,92 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={this.state.email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <div>
+        <Fragment>
+          <div class="content-section">
+            <div class="tweets-container">
+              <div class="top-box-wrapper">
+                <div class="title-left-box">
+                  <div
+                    class="top-box-title"
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <Link to="/">
+                      <FontAwesomeIcon icon={faArrowLeft} /> Password
+                      reset
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Fragment>
+        <Fragment>
+          <div className="content-section">
+            <div className="tweets-container">
+              <div className="profile-box-wrapper">
+                <div className="div-block-12" />
 
-        {error && <p>{error.message}</p>}
-      </form>
+                <div
+                  className="profile-lower-box"
+                  style={{ marginTop: '15px' }}
+                >
+                  <div class="landing-page-header">
+                    <div
+                      className="profile-username"
+                      style={{ fontWeight: 'bold' }}
+                    >
+                      Password reset
+                      <br />
+                    </div>
+
+                    <Fragment>
+                      <div class="sign-in-form w-form">
+                        <form
+                          class="form-2 w-clearfix"
+                          onSubmit={this.onSubmit}
+                        >
+                          <label
+                            for="email-3"
+                            class="sign-in-form-label"
+                          >
+                            Email
+                          </label>
+                          <input
+                            class="sign-in-form-field"
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.onChange}
+                            type="text"
+                            required="required"
+                          />
+
+                          <div style={{ height: '13px' }} />
+                          {error && <p>{error.message}</p>}
+                          <input
+                            type="submit"
+                            value="Reset my password"
+                            class="sign-in-button"
+                            disabled={isInvalid}
+                          />
+                        </form>
+                      </div>
+                    </Fragment>
+                  </div>
+                </div>
+                <div className="div-block-14" />
+              </div>
+            </div>
+          </div>
+        </Fragment>
+      </div>
     );
   }
 }
 
 const PasswordForgetLink = () => (
   <p>
-    <Link to={ROUTES.PASSWORD_FORGET}>forget password?</Link>
+    <Link to={ROUTES.PASSWORD_FORGET}>forgot password?</Link>
   </p>
 );
 

@@ -5,6 +5,8 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import TweetList from './TweetList';
 
+import Spinner from '../Spinner/Spinner';
+
 import VisibilitySensor from 'react-visibility-sensor';
 
 class Tweets extends Component {
@@ -39,7 +41,7 @@ class Tweets extends Component {
       (this.props.filterById &&
         this.props.messages[0] &&
         this.props.messages[0].userId !== this.props.filterById) ||
-      (this.props.tweetCount > 0 && !this.props.messages[0])
+      (this.props.tweetCount > 1 && !this.props.messages[0])
     ) {
       this.onListenForMessages();
     }
@@ -150,7 +152,7 @@ class Tweets extends Component {
 
     return (
       <>
-        {loading && <div>Loading ...</div>}
+        {loading && <Spinner />}
 
         {!loading &&
           !this.props.filterById &&
@@ -160,13 +162,22 @@ class Tweets extends Component {
                 <div className="tweets-container">
                   <div className="tweet-wrapper">
                     <div className="tweet-left-box">
-                      <img
-                        src={`https://api.adorable.io/avatars/50/${
-                          authUser.uid
-                        }`}
-                        alt=""
-                        className="avatar"
-                      />
+                      {authUser.uid !==
+                      'VVZwP9faTeT4CtrDtHSS7aKDKZO2' ? (
+                        <img
+                          src={`https://api.adorable.io/avatars/100/${
+                            authUser.uid
+                          }`}
+                          alt=""
+                          className="avatar"
+                        />
+                      ) : (
+                        <img
+                          src="/img/detective.png"
+                          alt=""
+                          className="avatar"
+                        />
+                      )}
                     </div>
                     <div className="tweet-right-box">
                       <div className="form-block w-form">
@@ -207,7 +218,7 @@ class Tweets extends Component {
                   <div
                     className="tweet-wrapper"
                     style={{
-                      background: '#d3d3d3',
+                      background: '#E4E6E7',
                       height: '10px',
                     }}
                   />
@@ -230,16 +241,19 @@ class Tweets extends Component {
         messages.length > 4 &&
         !this.props.filterByReply ? (
           <VisibilitySensor onChange={this.onChange}>
-            <button
-              onClick={() =>
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                })
-              }
-            >
-              Back to top
-            </button>
+            <div className="content-section">
+              <br />
+              <button
+                onClick={() =>
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  })
+                }
+              >
+                Back to top
+              </button>
+            </div>
           </VisibilitySensor>
         ) : (
           <br />

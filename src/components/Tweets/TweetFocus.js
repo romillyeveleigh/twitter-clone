@@ -5,6 +5,8 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import TweetList from './TweetList';
 
+import Spinner from '../Spinner/Spinner';
+
 class TweetFocus extends Component {
   constructor(props) {
     super(props);
@@ -108,7 +110,7 @@ class TweetFocus extends Component {
     return (
       <>
         {loading ? (
-          <div>Loading ...</div>
+          <Spinner />
         ) : (
           <TweetList
             authUser={this.props.authUser}
@@ -124,13 +126,22 @@ class TweetFocus extends Component {
               <div className="tweets-container">
                 <div className="tweet-wrapper">
                   <div className="tweet-left-box">
-                    <img
-                      src={`https://api.adorable.io/avatars/50/${
-                        this.props.authUser.uid
-                      }`}
-                      alt=""
-                      className="avatar"
-                    />
+                    {this.props.authUser.uid !==
+                    'VVZwP9faTeT4CtrDtHSS7aKDKZO2' ? (
+                      <img
+                        src={`https://api.adorable.io/avatars/100/${
+                          this.props.authUser.uid
+                        }`}
+                        alt=""
+                        className="avatar"
+                      />
+                    ) : (
+                      <img
+                        src="/img/detective.png"
+                        alt=""
+                        className="avatar"
+                      />
+                    )}
                   </div>
                   <div className="tweet-right-box">
                     <div className="form-block w-form">
