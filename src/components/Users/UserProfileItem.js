@@ -158,7 +158,10 @@ class UserProfileItem extends Component {
                 </div>
               </div>
             </Fragment>
-            <Tweets filterById={this.props.match.params.id} />
+            <Tweets
+              filterById={this.props.match.params.id}
+              tweetCount={this.state.count}
+            />
           </div>
         )}
       </div>

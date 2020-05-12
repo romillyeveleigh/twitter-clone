@@ -28,9 +28,20 @@ class Tweets extends Component {
   }
 
   componentDidUpdate(props) {
+    // check if there was a change in message limit
     if (props.limit !== this.props.limit) {
       this.onListenForMessages();
       this.onListenForLikes();
+    }
+
+    // check that messages in props correspond to selected user
+    if (
+      (this.props.filterById &&
+        this.props.messages[0] &&
+        this.props.messages[0].userId !== this.props.filterById) ||
+      (this.props.tweetCount > 0 && !this.props.messages[0])
+    ) {
+      this.onListenForMessages();
     }
   }
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
@@ -6,16 +6,65 @@ import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import { Link } from 'react-router-dom';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 
 const SignInPage = () => (
   <div>
-    <h1>SignIn</h1>
-    <SignInForm />
-    <SignInGoogle />
-    <SignInFacebook />
-    <SignInTwitter />
-    <PasswordForgetLink />
-    <SignUpLink />
+    <Fragment>
+      <div class="content-section">
+        <div class="tweets-container">
+          <div class="top-box-wrapper">
+            <div class="title-left-box">
+              <div
+                class="top-box-title"
+                style={{ cursor: 'pointer' }}
+              >
+                <Link to="/">
+                  <FontAwesomeIcon icon={faArrowLeft} /> Sign in
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Fragment>
+    <Fragment>
+      <div className="content-section">
+        <div className="tweets-container">
+          <div className="profile-box-wrapper">
+            <div className="div-block-12" />
+
+            <div
+              className="profile-lower-box"
+              style={{ marginTop: '15px' }}
+            >
+              <div class="landing-page-header">
+                <div
+                  className="profile-username"
+                  style={{ fontWeight: 700 }}
+                >
+                  Sign in
+                  <br />
+                </div>
+                <SignInForm />
+                <SignInGuest />
+                <div class="or">or</div>
+                <SignInGoogle />
+                <SignInFacebook />
+                <div class="or">or</div>
+                <SignUpLink />
+              </div>
+            </div>
+
+            <div className="div-block-14" />
+          </div>
+        </div>
+      </div>
+    </Fragment>
   </div>
 );
 
@@ -68,27 +117,100 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+      <div class="sign-in-form w-form">
+        <form
+          id="email-form-3"
+          name="email-form-3"
+          data-name="Email Form 3"
+          class="form-2 w-clearfix"
+          onSubmit={this.onSubmit}
+        >
+          <div class="email-form-section">
+            <label for="email-2" class="sign-in-form-label">
+              Email
+            </label>
+            <input
+              class="sign-in-form-field"
+              name="email"
+              value={email}
+              onChange={this.onChange}
+              type="text"
+              required="required"
+            />
+          </div>
+          <div class="password-form-section">
+            <label for="email-3" class="sign-in-form-label">
+              Password
+            </label>
+            <input
+              class="sign-in-form-field"
+              name="password"
+              value={password}
+              onChange={this.onChange}
+              type="password"
+              required="required"
+            />
+          </div>
+          <div
+            class="forgot-password"
+            style={{ textDecoration: 'underline' }}
+          >
+            <PasswordForgetLink />
+          </div>
+          <div style={{ height: '13px' }} />
+          {error && <p>{error.message}</p>}
+          <input
+            type="submit"
+            value="Log in"
+            class="sign-in-button"
+            disabled={isInvalid}
+          />
+        </form>
+      </div>
+    );
+  }
+}
 
-        {error && <p>{error.message}</p>}
-      </form>
+class SignInGuestBase extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { ...INITIAL_STATE };
+  }
+
+  onSubmit = event => {
+    const email = 'guest@gmail.com';
+    const password = 'guest123';
+
+    this.props.firebase
+      .doSignInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.setState({ ...INITIAL_STATE });
+        this.props.history.push(ROUTES.HOME);
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
+
+    event.preventDefault();
+  };
+
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  render() {
+    return (
+      <div class="text-block-6-copy">
+        <div
+          class="submit-button w-button"
+          type="submit"
+          onClick={this.onSubmit}
+          style={{ width: '100%', marginBottom: '10px' }}
+        >
+          <div>Demo (log in as guest)</div>
+        </div>
+      </div>
     );
   }
 }
@@ -130,11 +252,20 @@ class SignInGoogleBase extends Component {
     const { error } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Google</button>
-
-        {error && <p>{error.message}</p>}
-      </form>
+      <div
+        class="social-signin-button"
+        type="submit"
+        onClick={this.onSubmit}
+        style={{ marginTop: '10px' }}
+      >
+        <img
+          src="/img/google-logo.png"
+          width="23"
+          height="23"
+          alt=""
+        />
+        <div class="social-signin-label">Log in with Google</div>
+      </div>
     );
   }
 }
@@ -176,11 +307,19 @@ class SignInFacebookBase extends Component {
     const { error } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Facebook</button>
-
-        {error && <p>{error.message}</p>}
-      </form>
+      <div
+        class="social-signin-button"
+        type="submit"
+        onClick={this.onSubmit}
+      >
+        <img
+          src="/img/facebook-logo.png"
+          width="23"
+          height="23"
+          alt=""
+        />
+        <div class="social-signin-label">Log in with Facebook</div>
+      </div>
     );
   }
 }
@@ -236,6 +375,11 @@ const SignInForm = compose(
   withFirebase,
 )(SignInFormBase);
 
+const SignInGuest = compose(
+  withRouter,
+  withFirebase,
+)(SignInGuestBase);
+
 const SignInGoogle = compose(
   withRouter,
   withFirebase,
@@ -253,4 +397,10 @@ const SignInTwitter = compose(
 
 export default SignInPage;
 
-export { SignInForm, SignInGoogle, SignInFacebook, SignInTwitter };
+export {
+  SignInForm,
+  SignInGuest,
+  SignInGoogle,
+  SignInFacebook,
+  SignInTwitter,
+};
