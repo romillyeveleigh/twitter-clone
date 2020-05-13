@@ -229,12 +229,28 @@ class SignUpFormBase extends Component {
                           </label>
                           <div style={{ height: '13px' }} />
                           {error && <p>{error.message}</p>}
-                          <input
+
+                          <div
+                            className="social-signin-button"
                             type="submit"
-                            value="Sign up"
-                            className="sign-in-button"
+                            onClick={this.onSubmit}
                             disabled={isInvalid}
-                          />
+                            style={{
+                              backgroundColor: 'white',
+                              height: '33px',
+                              marginTop: '8px',
+                            }}
+                          >
+                            <div
+                              className="social-signin-label"
+                              style={{
+                                fontSize: 13.5,
+                                fontWeight: 700,
+                              }}
+                            >
+                              Sign up
+                            </div>
+                          </div>
                         </form>
                       </div>
                     </Fragment>

@@ -84,13 +84,7 @@ class TweetItem extends Component {
   };
 
   render() {
-    const {
-      authUser,
-      message,
-      likes,
-      onRemoveMessage,
-      onEditMessage,
-    } = this.props;
+    const { authUser, message, likes, onRemoveMessage } = this.props;
     const { editMode, editText } = this.state;
 
     // get reply count on every refresh

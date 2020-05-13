@@ -76,11 +76,10 @@ class UserList extends Component {
                             id="search"
                             ref={text}
                             className="user-search-text w-input2"
-                            maxlength="256"
+                            maxLength="256"
                             name="name"
                             data-name="Name"
                             placeholder=""
-                            id="name"
                             onChange={this.onChange}
                           />
                         </form>
@@ -102,7 +101,7 @@ class UserList extends Component {
                 .includes(text.toUpperCase()),
             )
             .map(user => (
-              <TransitionGroup>
+              <TransitionGroup key={user.uid}>
                 <CSSTransition
                   key={user.uid}
                   timeout={200}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import Moment from 'react-moment';
 
 import { withFirebase } from '../Firebase';
 

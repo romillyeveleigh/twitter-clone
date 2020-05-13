@@ -112,12 +112,28 @@ class PasswordForgetFormBase extends Component {
 
                           <div style={{ height: '13px' }} />
                           {error && <p>{error.message}</p>}
-                          <input
+
+                          <div
+                            className="social-signin-button"
                             type="submit"
-                            value="Reset my password"
-                            className="sign-in-button"
                             disabled={isInvalid}
-                          />
+                            onClick={this.onSubmit}
+                            style={{
+                              backgroundColor: 'white',
+                              height: '33px',
+                              marginTop: '8px',
+                            }}
+                          >
+                            <div
+                              className="social-signin-label"
+                              style={{
+                                fontSize: 13.5,
+                                fontWeight: 700,
+                              }}
+                            >
+                              Reset my password
+                            </div>
+                          </div>
                         </form>
                       </div>
                     </Fragment>

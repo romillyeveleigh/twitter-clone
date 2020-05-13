@@ -201,12 +201,26 @@ class Tweets extends Component {
                             value={text}
                             onChange={this.onChangeText}
                           />
-                          <input
-                            type="submit"
-                            value="Tweet"
-                            data-wait="Please wait..."
+                          <div
+                            onClick={event =>
+                              this.onCreateMessage(event, authUser)
+                            }
                             className="submit-button w-button"
-                          />
+                            type="submit"
+                            style={{
+                              width: '67px',
+                              fontSize: '13.5px',
+                            }}
+                          >
+                            <div
+                              style={{
+                                position: 'relative',
+                                right: '1px',
+                              }}
+                            >
+                              Tweet
+                            </div>
+                          </div>
                         </form>
                       </div>
                     </div>
@@ -259,7 +273,15 @@ class Tweets extends Component {
           <br />
         )}
 
-        {!messages && <div>There are no messages ...</div>}
+        {!loading &&
+          !this.props.filterByReply &&
+          messages.length === 0 && (
+            <div className="content-section">
+              <div className="tweets-container">
+                This user hasn't tweeted yet...
+              </div>
+            </div>
+          )}
       </>
     );
   }

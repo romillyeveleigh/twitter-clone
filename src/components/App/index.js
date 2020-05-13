@@ -13,6 +13,7 @@ import AdminPage from '../Admin';
 import UserProfilePage from '../UserProfile';
 import SearchPage from '../Search';
 import RepliesPage from '../Replies';
+import ToS from '../ToS/ToS';
 import ScrollIntoView from '../ScrollIntoView';
 
 import * as ROUTES from '../../constants/routes';
@@ -23,10 +24,11 @@ const App = () => (
     <div>
       <ScrollIntoView>
         <Navigation />
-        <div class="navbar-spacer" />
+        <div className="navbar-spacer" />
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+        <Route path={ROUTES.TOS} component={ToS} />
         <Route
           path={ROUTES.PASSWORD_FORGET}
           component={PasswordForgetPage}

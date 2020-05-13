@@ -158,12 +158,24 @@ class SignInFormBase extends Component {
           </div>
           <div style={{ height: '13px' }} />
           {error && <p>{error.message}</p>}
-          <input
+          <div
+            className="social-signin-button"
             type="submit"
-            value="Log in"
-            className="sign-in-button"
+            onClick={this.onSubmit}
+            style={{
+              backgroundColor: 'white',
+              height: '33px',
+              marginTop: '10px',
+            }}
             disabled={isInvalid}
-          />
+          >
+            <div
+              className="social-signin-label"
+              style={{ fontSize: 13.5, fontWeight: 700 }}
+            >
+              Log in
+            </div>
+          </div>
         </form>
       </div>
     );
@@ -248,7 +260,7 @@ class SignInGoogleBase extends Component {
   };
 
   render() {
-    const { error } = this.state;
+    // const { error } = this.state;
 
     return (
       <div
@@ -280,10 +292,14 @@ class SignInFacebookBase extends Component {
     this.props.firebase
       .doSignInWithFacebook()
       .then(socialAuthUser => {
+        // create a stand-in email address, because no email is being sent from Facebook
+        const generatedEmail =
+          socialAuthUser.user.uid + '@facebook.com';
+
         // Create a user in your Firebase Realtime Database too
         return this.props.firebase.user(socialAuthUser.user.uid).set({
           username: socialAuthUser.additionalUserInfo.profile.name,
-          email: socialAuthUser.additionalUserInfo.profile.email,
+          email: generatedEmail,
           roles: {},
         });
       })
@@ -295,7 +311,7 @@ class SignInFacebookBase extends Component {
         if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
           error.message = ERROR_MSG_ACCOUNT_EXISTS;
         }
-
+        console.log(error);
         this.setState({ error });
       });
 
@@ -306,21 +322,24 @@ class SignInFacebookBase extends Component {
     const { error } = this.state;
 
     return (
-      <div
-        className="social-signin-button"
-        type="submit"
-        onClick={this.onSubmit}
-      >
-        <img
-          src="/img/facebook-logo.png"
-          width="23"
-          height="23"
-          alt=""
-        />
-        <div className="social-signin-label">
-          Log in with Facebook
+      <Fragment>
+        <div
+          className="social-signin-button"
+          type="submit"
+          onClick={this.onSubmit}
+        >
+          <img
+            src="/img/facebook-logo.png"
+            width="23"
+            height="23"
+            alt=""
+          />
+          <div className="social-signin-label">
+            Log in with Facebook
+          </div>
         </div>
-      </div>
+        {error && console.log(error.message)}
+      </Fragment>
     );
   }
 }

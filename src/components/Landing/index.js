@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 
 import {
   SignInForm,
@@ -8,9 +7,6 @@ import {
   SignInFacebook,
 } from '../SignIn';
 import { SignUpLink } from '../SignUp';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 
 const Landing = () => (
   <div>

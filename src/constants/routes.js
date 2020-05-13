@@ -11,3 +11,4 @@ export const USER_PROFILE_DETAILS = '/userprofile/:id';
 export const SEARCH = '/search';
 export const REPLIES = '/replies';
 export const REPLIES_DETAILS = '/replies/:uid';
+export const TOS = '/termsofservice';
