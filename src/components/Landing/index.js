@@ -34,10 +34,10 @@ const Landing = () => (
               <div className="text-block-6-copy">
                 <SignInForm />
                 <SignInGuest />
-                <div class="or">or</div>
+                <div className="or">or</div>
                 <SignInGoogle />
                 <SignInFacebook />
-                <div class="or">or</div>
+                <div className="or">or</div>
                 <SignUpLink />
               </div>
             </div>

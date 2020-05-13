@@ -600,13 +600,13 @@ textarea.w-select {
   -ms-flex-pack: end;
   justify-content: flex-end;
   background: white;
-  background-image: url(http://localhost:3000/img/profile-background.jpg);
+  background-image: url(/img/profile-background.jpg);
   background-position: 0px 0px;
   background-size: cover;
 }
 
 .splash {
-  background-image: url(http://localhost:3000/img/splash-background.png);
+  background-image: url(/img/splash-background.png);
   background-size: center;
   background-position: center;
 }

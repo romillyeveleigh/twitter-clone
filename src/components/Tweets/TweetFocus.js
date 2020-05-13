@@ -101,7 +101,7 @@ class TweetFocus extends Component {
   };
 
   render() {
-    const { message, messages, likes } = this.props;
+    const { message, likes } = this.props;
     const { text, loading } = this.state;
     if (message[0]) {
       message[0].uid = this.props.filterByTweet;

@@ -53,18 +53,18 @@ class UserList extends Component {
     return (
       <div>
         <Fragment>
-          <div class="content-section">
-            <div class="tweets-container">
-              <div class="search-box-wrapper">
-                <div class="search-box">
-                  <div class="div-block-17">
-                    <div class="div-block-15">
-                      <div class="div-block-16">
+          <div className="content-section">
+            <div className="tweets-container">
+              <div className="search-box-wrapper">
+                <div className="search-box">
+                  <div className="div-block-17">
+                    <div className="div-block-15">
+                      <div className="div-block-16">
                         <div>
                           <FontAwesomeIcon icon={faSearch} />
                         </div>
                       </div>
-                      <div class="form-block-2 w-form">
+                      <div className="form-block-2 w-form">
                         <form
                           id="email-form-2"
                           name="email-form-2"
@@ -75,7 +75,7 @@ class UserList extends Component {
                             type="text"
                             id="search"
                             ref={text}
-                            class="user-search-text w-input2"
+                            className="user-search-text w-input2"
                             maxlength="256"
                             name="name"
                             data-name="Name"

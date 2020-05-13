@@ -30,89 +30,89 @@ const Navigation = ({ authUser }) =>
 const NavigationAuth = ({ authUser }) => (
   <Fragment>
     <Fragment>
-      <div class="navbar-section-desktop">
-        <div class="navbar-left">
-          <div class="navbar-left-content">
-            <div class="navbar-main-logo-wrapper">
+      <div className="navbar-section-desktop">
+        <div className="navbar-left">
+          <div className="navbar-left-content">
+            <div className="navbar-main-logo-wrapper">
               <img
                 src="/img/buzzby-logo.png"
                 alt=""
-                class="navbar-logo"
+                className="navbar-logo"
               />
             </div>
-            <div class="navbar-menu-item">
-              <div class="navbar-menu-icon">
-                <strong class="bold-text">
+            <div className="navbar-menu-item">
+              <div className="navbar-menu-icon">
+                <strong className="bold-text">
                   <FontAwesomeIcon icon={faHome} />
                 </strong>
               </div>
-              <div class="navbar-menu-text">
+              <div className="navbar-menu-text">
                 <Link to={ROUTES.HOME}>Home</Link>
               </div>
             </div>
-            <div class="navbar-menu-item">
-              <div class="navbar-menu-icon">
+            <div className="navbar-menu-item">
+              <div className="navbar-menu-icon">
                 <FontAwesomeIcon icon={faSearch} />
               </div>
-              <div class="navbar-menu-text">
+              <div className="navbar-menu-text">
                 <Link to={ROUTES.SEARCH}>Search</Link>
               </div>
             </div>
-            <div class="navbar-menu-item">
-              <div class="navbar-menu-icon">
+            <div className="navbar-menu-item">
+              <div className="navbar-menu-icon">
                 <FontAwesomeIcon icon={faUserRegular} />
               </div>
-              <div class="navbar-menu-text">
+              <div className="navbar-menu-text">
                 <Link to={`${ROUTES.USER_PROFILE}/${authUser.uid}`}>
                   Profile
                 </Link>
               </div>
             </div>
             {!!authUser.roles[ROLES.ADMIN] && (
-              <div class="navbar-menu-item">
-                <div class="navbar-menu-icon">
+              <div className="navbar-menu-item">
+                <div className="navbar-menu-icon">
                   <FontAwesomeIcon icon={faUserCog} />
                 </div>
-                <div class="navbar-menu-text">
+                <div className="navbar-menu-text">
                   <Link to={ROUTES.ADMIN}>Admin</Link>
                 </div>
               </div>
             )}
-            <div class="navbar-menu-item">
-              <div class="navbar-menu-icon">
+            <div className="navbar-menu-item">
+              <div className="navbar-menu-icon">
                 <FontAwesomeIcon icon={faSignOutAlt} />
               </div>
-              <div class="navbar-menu-text">
+              <div className="navbar-menu-text">
                 <SignOutButton />
               </div>
             </div>
           </div>
-          <div class="navbar-left-margin" />
+          <div className="navbar-left-margin" />
         </div>
-        <div class="navbar-center" />
-        <div class="navbar-right" />
+        <div className="navbar-center" />
+        <div className="navbar-right" />
       </div>
     </Fragment>
     <Fragment>
-      <div class="mobile-section">
-        <div class="mobile-navbar">
-          <div class="mobile-navbar-icon">
+      <div className="mobile-section">
+        <div className="mobile-navbar">
+          <div className="mobile-navbar-icon">
             <Link to={ROUTES.HOME}>
               <FontAwesomeIcon icon={faHome} />
             </Link>
           </div>
-          <div class="mobile-navbar-icon">
+          <div className="mobile-navbar-icon">
             {' '}
             <Link to={ROUTES.SEARCH}>
               <FontAwesomeIcon icon={faSearch} />
             </Link>
           </div>
-          <div class="mobile-navbar-icon">
+          <div className="mobile-navbar-icon">
             <Link to={`${ROUTES.USER_PROFILE}/${authUser.uid}`}>
               <FontAwesomeIcon icon={faUser} />
             </Link>
           </div>
-          <div class="mobile-navbar-icon">
+          <div className="mobile-navbar-icon">
             <SignOutButton signOutLinkType={'button'} />
           </div>
         </div>
@@ -124,64 +124,64 @@ const NavigationAuth = ({ authUser }) => (
 const NavigationNonAuth = () => (
   <Fragment>
     <Fragment>
-      <div class="navbar-section-desktop">
-        <div class="navbar-left">
-          <div class="navbar-left-content">
-            <div class="navbar-main-logo-wrapper">
+      <div className="navbar-section-desktop">
+        <div className="navbar-left">
+          <div className="navbar-left-content">
+            <div className="navbar-main-logo-wrapper">
               <img
                 src="/img/buzzby-logo.png"
                 alt=""
-                class="navbar-logo"
+                className="navbar-logo"
               />
             </div>
-            <div class="navbar-menu-item">
-              <div class="navbar-menu-icon">
-                <strong class="bold-text">
+            <div className="navbar-menu-item">
+              <div className="navbar-menu-icon">
+                <strong className="bold-text">
                   <FontAwesomeIcon icon={faHome} />
                 </strong>
               </div>
-              <div class="navbar-menu-text">
+              <div className="navbar-menu-text">
                 <Link to={ROUTES.LANDING}>Welcome</Link>
               </div>
             </div>
 
-            <div class="navbar-menu-item">
-              <div class="navbar-menu-icon">
+            <div className="navbar-menu-item">
+              <div className="navbar-menu-icon">
                 <FontAwesomeIcon icon={faSignInAlt} />
               </div>
-              <div class="navbar-menu-text">
+              <div className="navbar-menu-text">
                 <Link to={ROUTES.SIGN_IN}>Sign In</Link>
               </div>
             </div>
-            <div class="navbar-menu-item">
-              <div class="navbar-menu-icon">
+            <div className="navbar-menu-item">
+              <div className="navbar-menu-icon">
                 <FontAwesomeIcon icon={faUserPlus} />
               </div>
-              <div class="navbar-menu-text">
+              <div className="navbar-menu-text">
                 <Link to={ROUTES.SIGN_UP}>Sign up</Link>
               </div>
             </div>
           </div>
-          <div class="navbar-left-margin" />
+          <div className="navbar-left-margin" />
         </div>
-        <div class="navbar-center" />
-        <div class="navbar-right" />
+        <div className="navbar-center" />
+        <div className="navbar-right" />
       </div>
     </Fragment>
     <Fragment>
-      <div class="mobile-section">
-        <div class="mobile-navbar">
-          <div class="mobile-navbar-icon">
+      <div className="mobile-section">
+        <div className="mobile-navbar">
+          <div className="mobile-navbar-icon">
             <Link to={ROUTES.LANDING}>
               <FontAwesomeIcon icon={faHome} />
             </Link>
           </div>
-          <div class="mobile-navbar-icon">
+          <div className="mobile-navbar-icon">
             <Link to={ROUTES.SIGN_IN}>
               <FontAwesomeIcon icon={faSignInAlt} />
             </Link>
           </div>
-          <div class="mobile-navbar-icon">
+          <div className="mobile-navbar-icon">
             <Link to={ROUTES.SIGN_UP}>
               <FontAwesomeIcon icon={faUserPlus} />
             </Link>

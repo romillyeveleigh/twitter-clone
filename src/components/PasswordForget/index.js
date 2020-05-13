@@ -52,12 +52,12 @@ class PasswordForgetFormBase extends Component {
     return (
       <div>
         <Fragment>
-          <div class="content-section">
-            <div class="tweets-container">
-              <div class="top-box-wrapper">
-                <div class="title-left-box">
+          <div className="content-section">
+            <div className="tweets-container">
+              <div className="top-box-wrapper">
+                <div className="title-left-box">
                   <div
-                    class="top-box-title"
+                    className="top-box-title"
                     style={{ cursor: 'pointer' }}
                   >
                     <Link to="/">
@@ -80,7 +80,7 @@ class PasswordForgetFormBase extends Component {
                   className="profile-lower-box"
                   style={{ marginTop: '15px' }}
                 >
-                  <div class="landing-page-header">
+                  <div className="landing-page-header">
                     <div
                       className="profile-username"
                       style={{ fontWeight: 'bold' }}
@@ -90,19 +90,19 @@ class PasswordForgetFormBase extends Component {
                     </div>
 
                     <Fragment>
-                      <div class="sign-in-form w-form">
+                      <div className="sign-in-form w-form">
                         <form
-                          class="form-2 w-clearfix"
+                          className="form-2 w-clearfix"
                           onSubmit={this.onSubmit}
                         >
                           <label
                             for="email-3"
-                            class="sign-in-form-label"
+                            className="sign-in-form-label"
                           >
                             Email
                           </label>
                           <input
-                            class="sign-in-form-field"
+                            className="sign-in-form-field"
                             name="email"
                             value={this.state.email}
                             onChange={this.onChange}
@@ -115,7 +115,7 @@ class PasswordForgetFormBase extends Component {
                           <input
                             type="submit"
                             value="Reset my password"
-                            class="sign-in-button"
+                            className="sign-in-button"
                             disabled={isInvalid}
                           />
                         </form>

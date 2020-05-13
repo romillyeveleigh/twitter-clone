@@ -12,11 +12,14 @@ import * as ROUTES from '../../constants/routes';
 
 const RepliesPage = props => (
   <div>
-    <div class="content-section">
-      <div class="tweets-container">
-        <div class="top-box-wrapper">
-          <div class="title-left-box">
-            <div class="top-box-title" style={{ cursor: 'pointer' }}>
+    <div className="content-section">
+      <div className="tweets-container">
+        <div className="top-box-wrapper">
+          <div className="title-left-box">
+            <div
+              className="top-box-title"
+              style={{ cursor: 'pointer' }}
+            >
               <Link to="/home" style={{ fontweight: '400px' }}>
                 <FontAwesomeIcon icon={faArrowLeft} />
                 {'   '}Tweet

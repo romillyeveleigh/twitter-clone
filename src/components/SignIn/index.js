@@ -10,17 +10,16 @@ import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 
 const SignInPage = () => (
   <div>
     <Fragment>
-      <div class="content-section">
-        <div class="tweets-container">
-          <div class="top-box-wrapper">
-            <div class="title-left-box">
+      <div className="content-section">
+        <div className="tweets-container">
+          <div className="top-box-wrapper">
+            <div className="title-left-box">
               <div
-                class="top-box-title"
+                className="top-box-title"
                 style={{ cursor: 'pointer' }}
               >
                 <Link to="/">
@@ -42,7 +41,7 @@ const SignInPage = () => (
               className="profile-lower-box"
               style={{ marginTop: '15px' }}
             >
-              <div class="landing-page-header">
+              <div className="landing-page-header">
                 <div
                   className="profile-username"
                   style={{ fontWeight: 700 }}
@@ -52,10 +51,10 @@ const SignInPage = () => (
                 </div>
                 <SignInForm />
                 <SignInGuest />
-                <div class="or">or</div>
+                <div className="or">or</div>
                 <SignInGoogle />
                 <SignInFacebook />
-                <div class="or">or</div>
+                <div className="or">or</div>
                 <SignUpLink />
               </div>
             </div>
@@ -117,20 +116,20 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <div class="sign-in-form w-form">
+      <div className="sign-in-form w-form">
         <form
           id="email-form-3"
           name="email-form-3"
           data-name="Email Form 3"
-          class="form-2 w-clearfix"
+          className="form-2 w-clearfix"
           onSubmit={this.onSubmit}
         >
-          <div class="email-form-section">
-            <label for="email-2" class="sign-in-form-label">
+          <div className="email-form-section">
+            <label for="email-2" className="sign-in-form-label">
               Email
             </label>
             <input
-              class="sign-in-form-field"
+              className="sign-in-form-field"
               name="email"
               value={email}
               onChange={this.onChange}
@@ -138,12 +137,12 @@ class SignInFormBase extends Component {
               required="required"
             />
           </div>
-          <div class="password-form-section">
-            <label for="email-3" class="sign-in-form-label">
+          <div className="password-form-section">
+            <label for="email-3" className="sign-in-form-label">
               Password
             </label>
             <input
-              class="sign-in-form-field"
+              className="sign-in-form-field"
               name="password"
               value={password}
               onChange={this.onChange}
@@ -152,7 +151,7 @@ class SignInFormBase extends Component {
             />
           </div>
           <div
-            class="forgot-password"
+            className="forgot-password"
             style={{ textDecoration: 'underline' }}
           >
             <PasswordForgetLink />
@@ -162,7 +161,7 @@ class SignInFormBase extends Component {
           <input
             type="submit"
             value="Log in"
-            class="sign-in-button"
+            className="sign-in-button"
             disabled={isInvalid}
           />
         </form>
@@ -201,9 +200,9 @@ class SignInGuestBase extends Component {
 
   render() {
     return (
-      <div class="text-block-6-copy">
+      <div className="text-block-6-copy">
         <div
-          class="submit-button w-button"
+          className="submit-button w-button"
           type="submit"
           onClick={this.onSubmit}
           style={{ width: '100%', marginBottom: '10px' }}
@@ -253,7 +252,7 @@ class SignInGoogleBase extends Component {
 
     return (
       <div
-        class="social-signin-button"
+        className="social-signin-button"
         type="submit"
         onClick={this.onSubmit}
         style={{ marginTop: '10px' }}
@@ -264,7 +263,7 @@ class SignInGoogleBase extends Component {
           height="23"
           alt=""
         />
-        <div class="social-signin-label">Log in with Google</div>
+        <div className="social-signin-label">Log in with Google</div>
       </div>
     );
   }
@@ -308,7 +307,7 @@ class SignInFacebookBase extends Component {
 
     return (
       <div
-        class="social-signin-button"
+        className="social-signin-button"
         type="submit"
         onClick={this.onSubmit}
       >
@@ -318,7 +317,9 @@ class SignInFacebookBase extends Component {
           height="23"
           alt=""
         />
-        <div class="social-signin-label">Log in with Facebook</div>
+        <div className="social-signin-label">
+          Log in with Facebook
+        </div>
       </div>
     );
   }

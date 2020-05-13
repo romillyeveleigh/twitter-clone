@@ -100,12 +100,12 @@ class SignUpFormBase extends Component {
     return (
       <div>
         <Fragment>
-          <div class="content-section">
-            <div class="tweets-container">
-              <div class="top-box-wrapper">
-                <div class="title-left-box">
+          <div className="content-section">
+            <div className="tweets-container">
+              <div className="top-box-wrapper">
+                <div className="title-left-box">
                   <div
-                    class="top-box-title"
+                    className="top-box-title"
                     style={{ cursor: 'pointer' }}
                   >
                     <Link to="/">
@@ -127,7 +127,7 @@ class SignUpFormBase extends Component {
                   className="profile-lower-box"
                   style={{ marginTop: '15px' }}
                 >
-                  <div class="landing-page-header">
+                  <div className="landing-page-header">
                     <div
                       className="profile-username"
                       style={{ fontWeight: 'bold' }}
@@ -137,23 +137,23 @@ class SignUpFormBase extends Component {
                     </div>
 
                     <Fragment>
-                      <div class="sign-in-form w-form">
+                      <div className="sign-in-form w-form">
                         <form
                           id="email-form-3"
                           name="email-form-3"
                           data-name="Email Form 3"
-                          class="form-2 w-clearfix"
+                          className="form-2 w-clearfix"
                           onSubmit={this.onSubmit}
                         >
-                          <div class="email-form-section">
+                          <div className="email-form-section">
                             <label
                               for="email-2"
-                              class="sign-in-form-label"
+                              className="sign-in-form-label"
                             >
                               Name
                             </label>
                             <input
-                              class="sign-in-form-field"
+                              className="sign-in-form-field"
                               name="username"
                               value={username}
                               onChange={this.onChange}
@@ -161,15 +161,15 @@ class SignUpFormBase extends Component {
                               required="required"
                             />
                           </div>
-                          <div class="password-form-section">
+                          <div className="password-form-section">
                             <label
                               for="email-3"
-                              class="sign-in-form-label"
+                              className="sign-in-form-label"
                             >
                               Email
                             </label>
                             <input
-                              class="sign-in-form-field"
+                              className="sign-in-form-field"
                               name="email"
                               value={email}
                               onChange={this.onChange}
@@ -179,12 +179,12 @@ class SignUpFormBase extends Component {
                           </div>
                           <label
                             for="email-3"
-                            class="sign-in-form-label"
+                            className="sign-in-form-label"
                           >
                             Password
                           </label>
                           <input
-                            class="sign-in-form-field"
+                            className="sign-in-form-field"
                             name="passwordOne"
                             value={passwordOne}
                             onChange={this.onChange}
@@ -194,12 +194,12 @@ class SignUpFormBase extends Component {
 
                           <label
                             for="email-3"
-                            class="sign-in-form-label"
+                            className="sign-in-form-label"
                           >
                             Confirm password
                           </label>
                           <input
-                            class="sign-in-form-field"
+                            className="sign-in-form-field"
                             name="passwordTwo"
                             value={passwordTwo}
                             onChange={this.onChange}
@@ -232,17 +232,17 @@ class SignUpFormBase extends Component {
                           <input
                             type="submit"
                             value="Sign up"
-                            class="sign-in-button"
+                            className="sign-in-button"
                             disabled={isInvalid}
                           />
                         </form>
                       </div>
                     </Fragment>
-                    <div class="or">or</div>
-                    <div class="text-block-6-copy">
+                    <div className="or">or</div>
+                    <div className="text-block-6-copy">
                       <Link to={ROUTES.SIGN_IN}>
                         <div
-                          class="submit-button w-button"
+                          className="submit-button w-button"
                           type="submit"
                           style={{
                             width: '100%',
@@ -266,10 +266,10 @@ class SignUpFormBase extends Component {
 }
 
 const SignUpLink = () => (
-  <div class="text-block-6-copy">
+  <div className="text-block-6-copy">
     <Link to={ROUTES.SIGN_UP}>
       <div
-        class="submit-button w-button"
+        className="submit-button w-button"
         type="submit"
         style={{ width: '100%', marginBottom: '10px' }}
       >
